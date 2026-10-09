@@ -1,32 +1,38 @@
-# Deteccion de formas geometricas con YOLOv12
+Aquí tienes el contenido completo del **`README.md`** listo para copiar y pegar directamente. Se agregaron los pares de imágenes para `val_batch0`, `val_batch1` y `val_batch2` ajustados exactamente con las extensiones correspondientes que se ven en la captura (`.png` para las gráficas y `.jpg` para los lotes de validación):
 
-Proyecto de Corte - 2° Corte · Electiva IV - Deep Computer Vision · Facultad de Ingenieria Mecatronica, Universidad Santo Tomas Bucaramanga.
+```markdown
+# Detección de formas geométricas con YOLOv12
+
+Proyecto de Corte - 2° Corte · Electiva IV - Deep Computer Vision · Facultad de Ingeniería Mecatrónica, Universidad Santo Tomás Bucaramanga.
 
 **Autores:** `Pablo Hernandez Achagua _ Andres Polo Gonzalez`
 
-Modelo **YOLOv12n** (Ultralytics) entrenado para detectar **circulo, cuadrado y triangulo**, con una demo en tiempo real por webcam que muestra bounding box, clase, confianza, color detectado y el Accuracy de validacion (`Acc_val`), todo al mismo tiempo.
+Modelo **YOLOv12n** (Ultralytics) entrenado para detectar **círculo, cuadrado y triángulo**, con una demo en tiempo real por webcam que muestra bounding box, clase, confianza, color detectado y el Accuracy de validación (`Acc_val`), todo al mismo tiempo.
 
 ---
 
 ## 1. Estructura del proyecto
 
-```
-yolo_formas/
-├── data/                 dataset (data/shapes3b/{train,valid,test}) - ver seccion 4
-├── models/               best.pt  (pesos del mejor modelo)
-├── metrics/              acc_val.json, metrics_*.json
-│   └── figuras/          matriz de confusion, curvas PR, resultados del entrenamiento
-├── common.py             funciones compartidas (IoU, emparejamiento, data.yaml)
-├── prepare_data.py       descarga, filtra y divide el dataset (opcional, ver seccion 4)
-├── train.py              entrenamiento
-├── validate.py           mAP@0.5, precision, recall, matriz de confusion
-├── metrics_val.py        calcula Acc_val (el numero del overlay)
-├── realtime.py           demo en tiempo real
-├── requirements.txt
-└── README.md
+
 ```
 
-## 2. Instalacion
+yolo_formas/
+├── data/                 dataset (data/shapes3b/{train,valid,test}) - ver sección 4
+├── models/                best.pt  (pesos del mejor modelo)
+├── metrics/               acc_val.json, metrics_*.json
+│   └── figuras/           matriz de confusión, curvas PR, resultados del entrenamiento
+├── common.py              funciones compartidas (IoU, emparejamiento, data.yaml)
+├── prepare_data.py        descarga, filtra y divide el dataset (opcional, ver sección 4)
+├── train.py               entrenamiento
+├── validate.py            mAP@0.5, precisión, recall, matriz de confusión
+├── metrics_val.py         calcula Acc_val (el número del overlay)
+├── realtime.py            demo en tiempo real
+├── requirements.txt
+└── README.md
+
+```
+
+## 2. Instalación
 
 Python 3.9 o superior.
 
@@ -34,144 +40,197 @@ Python 3.9 o superior.
 python -m venv .venv
 .venv\Scripts\activate          # Windows   (Mac/Linux: source .venv/bin/activate)
 pip install -r requirements.txt
+
 ```
 
 La demo funciona en CPU. El entrenamiento se hizo en Google Colab con GPU Tesla T4.
 
 ## 3. Resumen de resultados
 
-> Completar con los numeros finales de `metrics/metrics_valid.json`, `metrics/metrics_test.json` y `metrics/acc_val.json`.
+> Completar con los números finales de `metrics/metrics_valid.json`, `metrics/metrics_test.json` y `metrics/acc_val.json`.
 
-| Metrica | Validacion | Test |
-|---|---|---|
+| Métrica | Validación | Test |
+| --- | --- | --- |
 | mAP@0.5 | 0.955 | `[COMPLETAR]` |
 | mAP@0.5:0.95 | 0.916 | `[COMPLETAR]` |
-| Precision | 0.886 | `[COMPLETAR]` |
+| Precisión | 0.886 | `[COMPLETAR]` |
 | Recall | 0.927 | `[COMPLETAR]` |
 | **Acc_val** (TP / GT) | `[COMPLETAR]` | `[COMPLETAR]` |
 
-Por clase (validacion, 170 imagenes, 231 instancias):
+Por clase (validación, 170 imágenes, 231 instancias):
 
-| Clase | Precision | Recall | AP@0.5 |
-|---|---|---|---|
+| Clase | Precisión | Recall | AP@0.5 |
+| --- | --- | --- | --- |
 | circle | 0.877 | 0.957 | 0.972 |
 | square | 0.856 | 0.867 | 0.932 |
 | triangle | 0.926 | 0.959 | 0.962 |
 
-La matriz de confusion y las curvas PR estan en `metrics/figuras/`.
+---
+
+### Gráficas de Evaluación y Desempeño
+
+#### Curvas de Rendimiento
+
+| Curva Precision-Recall (PR) | Curva F1-Confidence |
+| --- | --- |
+|  |  |
+
+| Curva Precision-Confidence | Curva Recall-Confidence |
+| --- | --- |
+|  |  |
+
+#### Matriz de Confusión
+
+| Matriz de Confusión Absoluta | Matriz de Confusión Normalizada |
+| --- | --- |
+|  |  |
+
+#### Ejemplos de Validación (Etiquetas Verdaderas vs Predicciones)
+
+* **Batch 0:**
+| Ground Truth (`val_batch0_labels.jpg`) | Predicciones del Modelo (`val_batch0_pred.jpg`) |
+| --- | --- |
+|  |  |
+
+
+* **Batch 1:**
+| Ground Truth (`val_batch1_labels.jpg`) | Predicciones del Modelo (`val_batch1_pred.jpg`) |
+| --- | --- |
+|  |  |
+
+
+* **Batch 2:**
+| Ground Truth (`val_batch2_labels.jpg`) | Predicciones del Modelo (`val_batch2_pred.jpg`) |
+| --- | --- |
+|  |  |
+
+
+
+---
 
 ## 4. Dataset
 
-- **Origen:** [Shapes Classification](https://universe.roboflow.com/thesis-95twb/shapes-classification) (autor: *Thesis*, Roboflow Universe), licencia **CC BY 4.0**.
-- **No fue generado por nosotros:** ya existia en el repositorio. El original tiene 3.738 imagenes y 12 clases (circle, square, triangle, rectangle, diamond, oval, cube, sphere, cone, cylinder, pyramid, heart).
-- **Formato:** YOLO (un `.txt` por imagen con `class x_center y_center width height`, relativos).
-- **Filtro estricto a 3 clases (circle, square, triangle):** se conservan solo las imagenes donde *todas* las etiquetas pertenecen a esas 3 clases. Si una imagen tenia ademas, por ejemplo, un rombo o un cubo, se descarta; de lo contrario esas figuras quedarian sin etiqueta y el modelo las aprenderia como fondo.
-- **Re-division 70/20/10** (train/valid/test) con semilla 42, mezclando los tres splits originales.
-- **Conteos finales:** `[COMPLETAR con la salida de la celda de conteo: imagenes e instancias por split]`
+* **Origen:** [Shapes Classification](https://universe.roboflow.com/thesis-95twb/shapes-classification) (autor: *Thesis*, Roboflow Universe), licencia **CC BY 4.0**.
+* **No fue generado por nosotros:** ya existía en el repositorio. El original tiene 3.738 imágenes y 12 clases (circle, square, triangle, rectangle, diamond, oval, cube, sphere, cone, cylinder, pyramid, heart).
+* **Formato:** YOLO (un `.txt` por imagen con `class x_center y_center width height`, relativos).
+* **Filtro estricto a 3 clases (circle, square, triangle):** se conservan solo las imágenes donde *todas* las etiquetas pertenecen a esas 3 clases. Si una imagen tenía además, por ejemplo, un rombo o un cubo, se descarta; de lo contrario esas figuras quedarían sin etiqueta y el modelo las aprendería como fondo.
+* **Re-división 70/20/10** (train/valid/test) con semilla 42, mezclando los tres splits originales.
+* **Conteos finales:** `[COMPLETAR con la salida de la celda de conteo: imágenes e instancias por split]`
 
 ### Obtener el dataset (dos opciones)
 
-**Opcion A (recomendada): usar exactamente el dataset con el que se entreno.**
-Esto garantiza que `Acc_val` y las metricas se calculen sobre imagenes que el modelo *no* vio. En Colab, despues de preparar el dataset:
+**Opción A (recomendada): usar exactamente el dataset con el que se entrenó.**
+Esto garantiza que `Acc_val` y las métricas se calculen sobre imágenes que el modelo *no* vio. En Colab, después de preparar el dataset:
 
 ```python
 !cd /content && zip -qr /content/drive/MyDrive/yolo_shapes/shapes3b.zip shapes3b
+
 ```
 
-Descarga `shapes3b.zip` de Drive y extraelo dentro de `data/`, de modo que quede `data/shapes3b/train/images/...` (cuidado con que no quede `data/shapes3b/shapes3b/`). El `data.yaml` que trae tiene rutas de Colab; no importa, los scripts lo regeneran.
+Descarga `shapes3b.zip` de Drive y extráelo dentro de `data/`, de modo que quede `data/shapes3b/train/images/...` (cuidado con que no quede `data/shapes3b/shapes3b/`). El `data.yaml` que trae tiene rutas de Colab; no importa, los scripts lo regeneran.
 
-**Opcion B: regenerarlo con `prepare_data.py`.**
+**Opción B: regenerarlo con `prepare_data.py`.**
 
 ```bash
 set ROBOFLOW_API_KEY=tu_clave        # Windows   (Mac/Linux: export ROBOFLOW_API_KEY=tu_clave)
-python prepare_data.py --version 1   # la misma version de Roboflow que se uso al descargar
+python prepare_data.py --version 1   # la misma versión de Roboflow que se usó al descargar
+
 ```
 
-> **Cuidado:** el split puede no ser identico al de Colab. Si usan la opcion B, hay que **volver a entrenar** (seccion 5); validar un modelo viejo con un split nuevo mezcla imagenes que ya vio y infla las metricas.
+> **Cuidado:** el split puede no ser idéntico al de Colab. Si usan la opción B, hay que **volver a entrenar** (sección 5); validar un modelo viejo con un split nuevo mezcla imágenes que ya vio e infla las métricas.
 
 ## 5. Entrenamiento
 
 ```bash
-python train.py                                  # yolo12n, imgsz=640, 100 epocas, early stopping (patience=20)
+python train.py                                   # yolo12n, imgsz=640, 100 épocas, early stopping (patience=20)
 python train.py --model yolo12s.pt --name shapes3b_s   # variante small, para comparar
+
 ```
 
-Parametros principales: `imgsz=640`, `epochs=100`, `batch=16`, `patience=20` (early stopping), `seed=42`. Modelo base `yolo12n.pt` (preentrenado en COCO, se descarga solo). Al terminar, el mejor modelo queda en **`models/best.pt`** y los graficos en `metrics/figuras/train/`.
+Parámetros principales: `imgsz=640`, `epochs=100`, `batch=16`, `patience=20` (early stopping), `seed=42`. Modelo base `yolo12n.pt` (preentrenado en COCO, se descarga solo). Al terminar, el mejor modelo queda en **`models/best.pt`** y los gráficos en `metrics/figuras/train/`.
 
-En Colab se uso el mismo comando (o el equivalente con `model.train(...)`), guardando los resultados en Google Drive para no perderlos si la sesion se desconecta.
+En Colab se usó el mismo comando (o el equivalente con `model.train(...)`), guardando los resultados en Google Drive para no perderlos si la sesión se desconecta.
 
-## 6. Validacion y metricas
+## 6. Validación y métricas
 
 ```bash
-python validate.py                  # mAP@0.5, precision, recall, matriz de confusion (valid)
+python validate.py                  # mAP@0.5, precisión, recall, matriz de confusión (valid)
 python validate.py --split test     # lo mismo sobre test
 python metrics_val.py               # Acc_val sobre valid -> metrics/acc_val.json
 python metrics_val.py --split test  # Acc sobre test      -> metrics/acc_test.json
-```
-
-**Definicion de Acc_val** (la del enunciado): una deteccion es *correcta* si empareja un Ground Truth con **IoU ≥ 0.5** y **clase correcta**.
 
 ```
-Acc_val    = TP / GT_total           (cuantas figuras reales se detectaron bien)
-Acc_estric = TP / (GT_total + FP)    (ademas penaliza detecciones sobrantes o equivocadas)
+
+**Definición de Acc_val** (la del enunciado): una detección es *correcta* si empareja un Ground Truth con **IoU ≥ 0.5** y **clase correcta**.
+
+```
+Acc_val    = TP / GT_total           (cuántas figuras reales se detectaron bien)
+Acc_estric = TP / (GT_total + FP)    (además penaliza detecciones sobrantes o equivocadas)
+
 ```
 
-- Umbral de confianza `conf = 0.25`, el mismo que usa la demo.
-- Emparejamiento uno a uno: cada Ground Truth solo puede ser cubierto por una prediccion (las de mayor confianza primero); una caja duplicada cuenta como falso positivo.
-- El overlay de la demo muestra `Acc_val`; `Acc_estric` queda en el JSON como referencia.
+* Umbral de confianza `conf = 0.25`, el mismo que usa la demo.
+* Emparejamiento uno a uno: cada Ground Truth solo puede ser cubierto por una predicción (las de mayor confianza primero); una caja duplicada cuenta como falso positivo.
+* El overlay de la demo muestra `Acc_val`; `Acc_estric` queda en el JSON como referencia.
 
 ## 7. Demo en tiempo real
 
 ```bash
-python realtime.py            # camara 0
-python realtime.py --cam 1    # si abre otra camara
+python realtime.py             # cámara 0
+python realtime.py --cam 1    # si abre otra cámara
+
 ```
 
-Muestra, en la misma ventana: bounding box, etiqueta con **clase + confianza + color detectado**, y el overlay fijo `Acc_val=XX%` leido de `metrics/acc_val.json` (no esta escrito a mano). Teclas: `q`/`ESC` salir, `s` guardar captura en `capturas/`.
+Muestra, en la misma ventana: bounding box, etiqueta con **clase + confianza + color detectado**, y el overlay fijo `Acc_val=XX%` leído de `metrics/acc_val.json` (no está escrito a mano). Teclas: `q`/`ESC` salir, `s` guardar captura en `capturas/`.
 
 El **color** se estima con la mediana HSV de la zona central de la caja (no lo aprende el modelo). Funciona mejor con figuras rellenas.
 
-## 8. Reproducir las metricas (paso a paso)
+## 8. Reproducir las métricas (paso a paso)
 
-1. Instalar dependencias (seccion 2).
-2. Dejar el dataset en `data/shapes3b/` (seccion 4, opcion A) y `best.pt` en `models/`.
-3. `python validate.py` → mAP@0.5, precision, recall, matriz de confusion.
+1. Instalar dependencias (sección 2).
+2. Dejar el dataset en `data/shapes3b/` (sección 4, opción A) y `best.pt` en `models/`.
+3. `python validate.py` → mAP@0.5, precisión, recall, matriz de confusión.
 4. `python metrics_val.py` → `Acc_val`.
 5. `python realtime.py` → ver el overlay con el mismo `Acc_val`.
 
 ## 9. Experimentos realizados
 
-| Experimento | Filtro de clases | Epocas | mAP@0.5 (valid) | AP@0.5 square |
-|---|---|---|---|---|
-| 1 | Conserva imagenes con otras figuras, borrando solo sus etiquetas | 50 (sin converger) | 0.759 | 0.612 |
-| 2 (final) | **Estricto**: solo imagenes con 3 clases | hasta 100, patience=20 | 0.955 | 0.932 |
+| Experimento | Filtro de clases | Épocas | mAP@0.5 (valid) | AP@0.5 square |
+| --- | --- | --- | --- | --- |
+| 1 | Conserva imágenes con otras figuras, borrando solo sus etiquetas | 50 (sin converger) | 0.759 | 0.612 |
+| 2 (final) | **Estricto**: solo imágenes con 3 clases | hasta 100, patience=20 | 0.955 | 0.932 |
 
-Nota: el split cambio entre experimentos (valid de 129 vs 170 imagenes), asi que la comparacion es informativa pero no exacta.
+Nota: el split cambió entre experimentos (valid de 129 vs 170 imágenes), así que la comparación es informativa pero no exacta.
 
-## 10. Limites y trabajo futuro
+## 10. Límites y trabajo futuro
 
-> Ajustar con lo que observen en la demo con camara real.
+> Ajustar con lo que observen en la demo con cámara real.
 
-- El dataset mezcla imagenes de internet; el rendimiento con camara, iluminacion y fondos propios puede ser menor que en validacion.
-- Solo 3 clases; figuras parecidas (rombo, rectangulo) no estan contempladas.
-- El color se obtiene con una regla sobre HSV, sensible a la iluminacion.
-- `[COMPLETAR: trabajo futuro, p. ej. fotos propias con webcam, mas clases, comparar yolo12n vs yolo12s]`
+* El dataset mezcla imágenes de internet; el rendimiento con cámara, iluminación y fondos propios puede ser menor que en validación.
+* Solo 3 clases; figuras parecidas (rombo, rectángulo) no están contempladas.
+* El color se obtiene con una regla sobre HSV, sensible a la iluminación.
+* `[COMPLETAR: trabajo futuro, p. ej. fotos propias con webcam, más clases, comparar yolo12n vs yolo12s]`
 
-## 11. Creditos y cita del dataset
+## 11. Créditos y cita del dataset
 
-Dataset: *Shapes Classification*, Thesis, Roboflow Universe (CC BY 4.0). Modelo: YOLOv12 via [Ultralytics](https://github.com/ultralytics/ultralytics).
+Dataset: *Shapes Classification*, Thesis, Roboflow Universe (CC BY 4.0). Modelo: YOLOv12 vía [Ultralytics](https://github.com/ultralytics/ultralytics).
 
 ```bibtex
 @misc{ shapes-classification_dataset,
   title = { Shapes Classification Dataset },
   type = { Open Source Dataset },
   author = { Thesis },
-  howpublished = { \url{ https://universe.roboflow.com/thesis-95twb/shapes-classification } },
-  url = { https://universe.roboflow.com/thesis-95twb/shapes-classification },
+  howpublished = { \url{ [https://universe.roboflow.com/thesis-95twb/shapes-classification](https://universe.roboflow.com/thesis-95twb/shapes-classification) } },
+  url = { [https://universe.roboflow.com/thesis-95twb/shapes-classification](https://universe.roboflow.com/thesis-95twb/shapes-classification) },
   journal = { Roboflow Universe },
   publisher = { Roboflow },
   year = { 2025 },
   month = { dec },
   note = { visited on 2026-10-08 },
 }
+
+```
+
+```
+
 ```
