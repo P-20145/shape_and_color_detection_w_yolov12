@@ -2,7 +2,7 @@
 
 Proyecto de Corte - 2° Corte · Electiva IV - Deep Computer Vision · Facultad de Ingenieria Mecatronica, Universidad Santo Tomas Bucaramanga.
 
-**Autores:** `[COMPLETAR: nombres]`
+**Autores:** `Pablo Hernandez Achagua _ Andres Polo Gonzalez`
 
 Modelo **YOLOv12n** (Ultralytics) entrenado para detectar **circulo, cuadrado y triangulo**, con una demo en tiempo real por webcam que muestra bounding box, clase, confianza, color detectado y el Accuracy de validacion (`Acc_val`), todo al mismo tiempo.
 
