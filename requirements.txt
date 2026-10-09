@@ -1,0 +1,8 @@
+# YOLOv12 viene incluido en Ultralytics (entrenado con 8.4.174; yolo12 existe desde 8.3.78).
+# PyTorch se instala automaticamente como dependencia de ultralytics.
+ultralytics>=8.3.78
+opencv-python>=4.8
+numpy
+pyyaml
+# Solo para descargar el dataset con prepare_data.py (no hace falta para la demo)
+roboflow
