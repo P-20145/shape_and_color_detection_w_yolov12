@@ -1,0 +1,30 @@
+{
+  "acc_val": 0.8783,
+  "acc_strict": 0.6847,
+  "split": "valid",
+  "conf": 0.4,
+  "iou": 0.5,
+  "imgsz": 640,
+  "n_images": 169,
+  "gt": 230,
+  "tp": 202,
+  "fp": 65,
+  "per_class": {
+    "circle": {
+      "gt": 69,
+      "tp": 65,
+      "acc": 0.942
+    },
+    "square": {
+      "gt": 89,
+      "tp": 72,
+      "acc": 0.809
+    },
+    "triangle": {
+      "gt": 72,
+      "tp": 65,
+      "acc": 0.9028
+    }
+  },
+  "formula": "acc_val = TP / GT_total ; acc_strict = TP / (GT_total + FP)"
+}
